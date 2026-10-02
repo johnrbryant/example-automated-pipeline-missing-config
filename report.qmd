@@ -1,0 +1,24 @@
+---
+title: "Automated pipeline report"
+format:
+  html:
+    embed-resources: true
+    toc: false
+execute:
+  echo: false
+---
+
+```{r}
+config <- yaml::read_yaml("config.yaml")
+```
+
+This report was generated automatically from the pipeline outputs, using multiplier = `r config$multiplier`.
+
+```{r}
+combined <- read.csv("out/combined.csv")
+knitr::kable(combined, caption = "Combined data")
+```
+
+```{r}
+knitr::include_graphics("out/values.png")
+```
